@@ -3,6 +3,10 @@
   "author": "Giovani Zaparoli",
   "version": "0.0.1",
   "private": true,
+  "engines": {
+    "node": "14.16.1",
+    "npm": "6.14.13"
+  },
   "scripts": {
     "start": "REACT_APP_API=development react-scripts --openssl-legacy-provider start",
     "lint": "eslint src/**/*.js",
