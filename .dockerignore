@@ -1,0 +1,10 @@
+.editorconfig
+.env
+.gitignore
+.gitlab-ci.yml
+package-lock.json
+yarn.lock
+README.md
+/node_modules
+/.git
+/.vscode
