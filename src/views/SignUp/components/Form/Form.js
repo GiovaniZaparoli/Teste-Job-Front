@@ -9,6 +9,9 @@ import schemas from '../../schemas'
 import useAuth from 'hooks/useAuth'
 import useSnackbar from 'hooks/useSnackbar'
 
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/material.css'
+
 export const Form = () => {
   const [loading, setLoading] = useState(false)
 
@@ -20,6 +23,7 @@ export const Form = () => {
     defaultValues: {
       name: '',
       email: '',
+      phone: '',
       password: '',
       cPassword: '',
     },
@@ -28,6 +32,7 @@ export const Form = () => {
   const onSubmit = async (data) => {
     try {
       setLoading(true)
+      data.phone = `+${data.phone}`
       await service.RicochetAPI.users.create(data)
       await service.RicochetAPI.auth.login({
         email: data.email,
@@ -80,6 +85,27 @@ export const Form = () => {
             }
             control={control}
             name="email"
+            mode="onBlur"
+          />
+        </Box>
+        <Box mt={1}>
+          <Controller
+            control={control}
+            name="phone"
+            as={
+              <PhoneInput
+                specialLabel="Phone"
+                color="secondary"
+                country="br"
+                variant="outlined"
+                enableAreaCodeStretch
+                error={!!errors.phone}
+                helperText={errors?.phone?.message}
+                inputStyle={{
+                  width: '100%',
+                }}
+              />
+            }
             mode="onBlur"
           />
         </Box>

@@ -10,9 +10,14 @@ const create = async ({ ...data }) => {
   return await RicochetAPI.post('/register', data)
 }
 
+const get = async () => {
+  return await RicochetAPI.get('/users')
+}
+
 const users = {
   me,
   create,
+  get,
 }
 
 export default users

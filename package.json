@@ -8,7 +8,7 @@
     "npm": "6.14.13"
   },
   "scripts": {
-    "start": "REACT_APP_API=development react-scripts --openssl-legacy-provider start",
+    "start": "REACT_APP_API=development react-scripts start",
     "lint": "eslint src/**/*.js",
     "build": "react-scripts build",
     "build:production": "REACT_APP_API=production yarn run build"
@@ -61,7 +61,8 @@
     "styled-components": "^5.2.1",
     "react-phone-input-2": "^2.14.0",
     "web-vitals": "^0.2.4",
-    "yup": "0.32.9"
+    "yup": "0.32.9",
+    "@twilio/voice-sdk": "2.3.0"
   },
   "resolutions": {
     "@date-io/moment/moment": "^2.24.0",

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import * as service from 'service'
 import AuthContext from 'contexts/AuthContext'
 
-import { Home as HomeIcon } from 'react-feather'
+import { PhoneCall as CallIcon } from 'react-feather'
 
 const AuthProvider = ({ children }) => {
   const [loaded, setLoaded] = useState(true)
@@ -33,8 +33,8 @@ const AuthProvider = ({ children }) => {
         subheader: 'Ricochet JobTest',
         items: [
           {
-            title: 'Home',
-            icon: HomeIcon,
+            title: 'Calls',
+            icon: CallIcon,
             href: '/home',
           },
         ],

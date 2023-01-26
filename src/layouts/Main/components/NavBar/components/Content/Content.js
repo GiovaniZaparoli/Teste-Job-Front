@@ -17,6 +17,8 @@ import useAuth from 'hooks/useAuth'
 
 import Logo from 'images/logo-ricochet360-sm.png'
 
+import { UsersBar } from './components'
+
 const renderNavItems = ({ items, ...rest }) => {
   return (
     <List disablePadding>
@@ -69,8 +71,6 @@ const reduceChildRoutes = ({
         href={item.href}
         icon={item.icon}
         key={key}
-        somePermissions={item.somePermissions}
-        permission={item.permission}
         info={item.info}
         show={item.show}
         title={item.title}
@@ -88,53 +88,60 @@ const Content = () => {
 
   return (
     <Box height="100%" display="flex" flexDirection="column">
-      <PerfectScrollbar options={{ suppressScrollX: true }}>
-        <Hidden lgUp>
-          <Box p={3} display="flex" justifyContent="center">
-            <RouterLink to="/">
-              <img src={Logo} alt="logo" width="60px" />
-            </RouterLink>
-          </Box>
-        </Hidden>
-        <Box mt={4} mb={4} textAlign="center">
-          <Typography variant="h5" color="textPrimary" underline="none">
-            {auth?.user?.name || ''}
-          </Typography>
-          <Box mt={2}>
-            <Typography variant="body2" color="textSecondary">
-              {auth?.account?.name === 'empty_account'
-                ? ''
-                : auth?.account?.name}
-            </Typography>
-          </Box>
+      <Hidden lgUp>
+        <Box p={3} display="flex" justifyContent="center">
+          <RouterLink to="/">
+            <img src={Logo} alt="logo" width="60px" />
+          </RouterLink>
         </Box>
-        <Divider />
+      </Hidden>
+      <Box mt={4} mb={4} textAlign="center">
+        <Typography variant="h5" color="textPrimary" underline="none">
+          {auth?.user?.name || ''}
+        </Typography>
+        <Box mt={2}>
+          <Typography variant="body2" color="textSecondary">
+            {auth?.account?.name === 'empty_account' ? '' : auth?.account?.name}
+          </Typography>
+        </Box>
+      </Box>
+      <Divider />
 
-        <Box
-          flex="1"
-          display="flex"
-          flexDirection="column"
-          justifyContent="space-between"
-          height="80vh"
-        >
-          <Box p={2}>
-            {auth.menuItems &&
-              auth.menuItems.map((item) => (
-                <List
-                  key={item.subheader}
-                  subheader={
-                    <ListSubheader disableGutters disableSticky>
-                      {item.subheader}
-                    </ListSubheader>
-                  }
-                >
-                  {renderNavItems({
-                    items: item.items,
-                    pathname: location.pathname,
-                  })}
-                </List>
-              ))}
-          </Box>
+      <Box
+        flex="1"
+        display="flex"
+        flexDirection="column"
+        justifyContent="space-between"
+        height="25vh"
+      >
+        <Box p={2}>
+          {auth.menuItems &&
+            auth.menuItems.map((item) => (
+              <List
+                key={item.subheader}
+                subheader={
+                  <ListSubheader disableGutters disableSticky>
+                    {item.subheader}
+                  </ListSubheader>
+                }
+              >
+                {renderNavItems({
+                  items: item.items,
+                  pathname: location.pathname,
+                })}
+              </List>
+            ))}
+        </Box>
+      </Box>
+      <Divider />
+      <Box my={1} display="flex" justifyContent="center">
+        <Typography variant="h6" color="secondary">
+          Users
+        </Typography>
+      </Box>
+      <PerfectScrollbar options={{ suppressScrollX: true }}>
+        <Box>
+          <UsersBar />
         </Box>
       </PerfectScrollbar>
     </Box>

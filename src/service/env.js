@@ -1,10 +1,10 @@
 export const getBaseURL = (project) => envsBaseUrl[project][env]
 
-const env = process?.env?.REACT_APP_API || 'development'
+const env = 'development'
 
 const envsBaseUrl = {
   api: {
-    development: 'http://localhost:80/api',
+    development: 'https://giovani-job-test-api.herokuapp.com/api',
     production: '',
   },
 }
