@@ -1,6 +1,6 @@
 import api from 'service/api'
 
-const RicochetAPI = api.create('api', false)
+const RicochetAPI = api.create('api', true)
 
 const token = async () => {
   return await RicochetAPI.get('/twilio/token')

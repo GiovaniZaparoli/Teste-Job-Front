@@ -1,11 +1,17 @@
 import React from 'react'
-import { include } from 'named-urls'
 
 import { Switch, Redirect, Route } from 'react-router-dom'
 import { RouteWithLayout } from './components'
 import { Auth as AuthLayout, Main as MainLayout } from './layouts'
 
-import { Login, Home, SignUp } from 'views'
+import {
+  Login,
+  Home,
+  SignUp,
+  NotFound,
+  ForgotPassword,
+  NewPassword,
+} from 'views'
 
 const Routes = () => {
   return (
@@ -25,6 +31,20 @@ const Routes = () => {
         exact
       />
       <RouteWithLayout
+        path={routes.forgotPassword}
+        component={ForgotPassword}
+        layout={AuthLayout}
+        redirect
+        exact
+      />
+      <RouteWithLayout
+        path={routes.newPassword}
+        component={NewPassword}
+        layout={AuthLayout}
+        redirect
+        exact
+      />
+      <RouteWithLayout
         path={routes.home}
         component={Home}
         layout={MainLayout}
@@ -33,7 +53,8 @@ const Routes = () => {
         auth
       />
 
-      <Redirect to={routes.root} />
+      <Route component={NotFound} exact path={routes.notFound} />
+      <Redirect to={routes.notFound} />
     </Switch>
   )
 }
@@ -42,6 +63,9 @@ export const routes = {
   root: '/',
   home: '/home',
   signUp: '/sign-up',
+  notFound: '/not-found',
+  forgotPassword: '/reset-password',
+  newPassword: '/new-password',
 }
 
 export default Routes

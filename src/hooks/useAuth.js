@@ -17,6 +17,7 @@ const useAuth = () => {
     user: context.user,
     menuItems: context.menuItems,
     loadDataWithAnimation: context.loadDataWithAnimation,
+    loadOut: context.loadOut,
   }
 }
 

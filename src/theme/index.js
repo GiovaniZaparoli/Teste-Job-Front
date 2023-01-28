@@ -3,11 +3,13 @@ import { ptBR } from '@material-ui/core/locale'
 
 import typography from './typography'
 import palette from './palette'
+import overrides from './overrides'
 
 const theme = createTheme(
   {
     typography,
     palette,
+    overrides,
     zIndex: {
       appBar: 1200,
       drawer: 1100,

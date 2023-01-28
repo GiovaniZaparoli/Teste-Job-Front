@@ -166,7 +166,7 @@ export const Form = () => {
             </Link>
             <Link
               component={RouterLink}
-              to="/forgot"
+              to="/new-password"
               variant="body2"
               color="textLink"
             >
@@ -189,7 +189,7 @@ export const Form = () => {
           <Box mt={2}>
             <Link
               component={RouterLink}
-              to="/forgot"
+              to="/new-password"
               variant="body2"
               color="textLink"
             >

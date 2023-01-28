@@ -1,55 +1,54 @@
 import React from 'react'
 
-import { Box, Container, Typography, Grid, makeStyles } from '@material-ui/core'
+import useFetch from 'hooks/useFetch'
+import {
+  Card,
+  Box,
+  Container,
+  Typography,
+  Grid,
+  makeStyles,
+  Divider,
+} from '@material-ui/core'
+import { CallsTable } from './components'
+import { Page } from 'components'
 
 import styles from './styles'
 
-import celebratingSVG from 'images/celebrating.svg'
+import * as service from 'service'
 
 const useStyles = makeStyles(styles)
 
 const MainComponent = () => {
   const classes = useStyles()
 
+  const { response, isLoading, refresh } = useFetch(
+    service.RicochetAPI.calls.get,
+    {},
+    [],
+  )
+
   return (
-    <Container>
-      <Box
-        display="flex"
-        alignItems="center"
-        textAlign="justify"
-        minHeight="72vh"
-      >
-        <Grid container justifyContent="space-between">
-          <Grid item md={5} lg={5} sm={12} xs={12}>
-            <Box mt={2} mb={5}>
-              <Typography variant="h1" className={classes.title}>
-                Bem-vindo!
-              </Typography>
-              <Box mt={5}>
-                <Box>
-                  <Typography variant="subtitle1" color="textPrimary">
-                    Phasellus hendrerit quam sit amet libero aliquam placerat.
-                  </Typography>
-                </Box>
-                <Box mt={2}>
-                  <Typography variant="subtitle1" color="textPrimary">
-                    Cras at augue pulvinar, venenatis magna quis, porttitor
-                    lectus.
-                  </Typography>
-                </Box>
-              </Box>
+    <Page title="Calls listing">
+      <Container maxWidth={false} className={classes.container}>
+        <Box mb={2}>
+          <Typography variant="h3">Calls History</Typography>
+          <Divider />
+        </Box>
+        <Box minHeight="72vh">
+          <Card>
+            <Box display="flex" width="100%" mt={2}>
+              <Grid container justifyContent="space-between">
+                <CallsTable
+                  calls={response?.data?.data}
+                  isLoading={isLoading}
+                />
+              </Grid>
             </Box>
-          </Grid>
-          <Grid item md={6} lg={6} sm={12} xs={12}>
-            <img
-              alt="Em desenvolvimento"
-              src={celebratingSVG}
-              className={classes.image}
-            />
-          </Grid>
-        </Grid>
-      </Box>
-    </Container>
+          </Card>
+        </Box>
+      </Container>
+    </Page>
   )
 }
 

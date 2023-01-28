@@ -11,13 +11,9 @@ const login = async (data) => {
   return loginResponse
 }
 
-// const forgotPassword = async (data) => {
-//   const response = await api.post('/users/password', {
-//     api_user: data,
-//   })
-
-//   return response
-// }
+const forgotPassword = async (data) => {
+  await RicochetAPI.post('/forgotPassword', data)
+}
 
 const setToken = (token) => {
   sessionStorage.setItem('AUTH_TOKEN', token)
@@ -48,6 +44,7 @@ const auth = {
   setToken,
   removeToken,
   isAuthenticated,
+  forgotPassword,
 }
 
 export default auth
