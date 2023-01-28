@@ -12,7 +12,6 @@ const NotFound = () => {
   const classes = useStyles()
   const history = useHistory()
 
-  console.log(routes.home)
   return (
     <Box className={classes.root}>
       <Grid container justifyContent="center">

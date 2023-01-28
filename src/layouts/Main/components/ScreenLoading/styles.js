@@ -11,7 +11,7 @@ const styles = (theme) => ({
     zIndex: -1,
   },
   bg: {
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: theme.palette.primary.light,
     position: 'fixed',
     height: '100%',
     width: '100%',

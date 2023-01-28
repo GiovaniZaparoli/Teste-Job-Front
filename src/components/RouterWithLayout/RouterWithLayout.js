@@ -28,7 +28,6 @@ const RouteWithLayout = ({
     }
   } else {
     if (auth) {
-      console.log('Passei aqui manito')
       service.RicochetAPI.auth.logout()
       loadOut()
       return null

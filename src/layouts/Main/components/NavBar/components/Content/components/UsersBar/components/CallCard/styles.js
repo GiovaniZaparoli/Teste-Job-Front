@@ -5,6 +5,14 @@ const styles = (theme) => ({
     backgroundColor: colors.green[400],
     color: '#FFFFFF',
   },
+  offlineChip: {
+    backgroundColor: colors.grey[400],
+    color: '#FFFFFF',
+  },
+  onCallChip: {
+    backgroundColor: colors.red[400],
+    color: '#FFFFFF',
+  },
   callButton: {
     backgroundColor: colors.green[500],
     color: '#FFFFFF',

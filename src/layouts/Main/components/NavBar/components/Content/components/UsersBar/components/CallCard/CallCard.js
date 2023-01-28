@@ -12,6 +12,9 @@ import {
 } from '@material-ui/core'
 import styles from './styles'
 import { PhoneForwarded, PhoneOff, MicOff, Mic } from 'react-feather'
+
+import helpers from 'helpers'
+
 const useStyles = makeStyles(styles)
 
 const CallCard = ({ user, muted, handleToggleCall, handleToggleMute }) => {
@@ -32,8 +35,11 @@ const CallCard = ({ user, muted, handleToggleCall, handleToggleMute }) => {
               <Grid item xl={4} md={12}>
                 <Box display="flex" justifyContent="flex-end">
                   <Chip
-                    label="Online"
-                    className={classes.onlineChip}
+                    label={user?.status.toUpperCase()}
+                    className={helpers.users.chipStatusColor(
+                      user?.status,
+                      classes,
+                    )}
                     size="small"
                   />
                 </Box>
@@ -71,13 +77,17 @@ const CallCard = ({ user, muted, handleToggleCall, handleToggleMute }) => {
                 )}
               </>
             ) : (
-              <IconButton
-                aria-label="Make a Call"
-                className={classes.callButton}
-                onClick={() => handleToggleCall(user, setInCall)}
-              >
-                <PhoneForwarded size={14} />
-              </IconButton>
+              <>
+                {user?.status === 'online' && (
+                  <IconButton
+                    aria-label="Make a Call"
+                    className={classes.callButton}
+                    onClick={() => handleToggleCall(user, setInCall)}
+                  >
+                    <PhoneForwarded size={14} />
+                  </IconButton>
+                )}
+              </>
             )}
           </Box>
         </Box>

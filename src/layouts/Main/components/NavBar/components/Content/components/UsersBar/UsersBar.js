@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Box, Drawer, Hidden, makeStyles, Typography } from '@material-ui/core'
+import { Box } from '@material-ui/core'
 
 import * as service from 'service'
 import { LoadingFeedback } from 'components'
@@ -45,7 +45,6 @@ const UsersBar = () => {
       setMuted(false)
       setOnPhone(true)
       setInCall(true)
-      console.log(user?.phone)
       const callInstance = await device.connect({
         params: { To: user?.phone },
       })
