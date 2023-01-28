@@ -9,8 +9,8 @@
   },
   "scripts": {
     "start": "REACT_APP_API=development react-scripts start",
-    "lint": "eslint src/**/*.js",
-    "build": "REACT_APP_API=production react-scripts build"
+    "build": "REACT_APP_API=production react-scripts build",
+    "postinstall": "react-scripts build"
   },
   "eslintConfig": {
     "extends": "react-app"
